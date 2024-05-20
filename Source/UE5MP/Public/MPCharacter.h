@@ -7,12 +7,17 @@
 #include "MPCharacter.generated.h"
 
 class UCameraComponent;
-class USpringArmComponent;
+//class USpringArmComponent;
 
 UCLASS()
 class UE5MP_API AMPCharacter : public ACharacter
 {
 	GENERATED_BODY()
+
+protected:
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AActor> ProjectileClass;
 
 public:
 	// Sets default values for this character's properties
@@ -20,8 +25,8 @@ public:
 
 protected:
 
-	UPROPERTY(VisibleAnywhere)
-	USpringArmComponent* SpringArmComp;
+	//UPROPERTY(VisibleAnywhere)
+	//USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
@@ -30,6 +35,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	void MoveForward(float Value);
+	void MoveRight(float Value);
+	void PrimaryAttack();
+	//void Jump();
 
 public:	
 	// Called every frame
